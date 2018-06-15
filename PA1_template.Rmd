@@ -1,3 +1,6 @@
+---
+output:  html_document
+---
 # Exploratory analysis of activity data
 
 This assignment makes use of data from a personal activity monitoring device. This device collects data at 5 minute intervals through out the day. The data consists of two months of data from an anonymous individual collected during the months of October and November, 2012 and include the number of steps taken in 5 minute intervals each day.
@@ -79,11 +82,13 @@ data<-data%>%
 
 Histogram of total number of steps taken per day
 
-```{r,echo=TRUE,warning=FALSE,message=FALSE}
+```{r,plot1:histogram on data with omitted NA, echo=TRUE,warning=FALSE,message=FALSE}
 library(ggplot2)
 ggplot(data=data,aes(total,fill="pink"))+
         geom_histogram()+
-        labs(x="Total number of steps taken per day",
+        labs(
+             title= "Histogram of total number of steps taken per day on data with omitted NA",
+             x="Total number of steps taken per day",
              y="Frequency")+
         theme_bw()
 ```
@@ -115,7 +120,7 @@ Compute the average steps taken in each unique interval and fill in the missing 
 
 Prepare a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 
-```{r,echo=TRUE}
+```{r Plot 2: Average number of steps taken averaged across all days,echo=TRUE}
 data_2<-tbl_df(file_input_na_rm)%>%
         group_by(interval)%>%
         summarize(average=mean(steps),total=sum(steps))# use this data in next step to fill in missing steps
@@ -180,11 +185,13 @@ WE see that the computation was sucessful and there are no more missing values i
 #### Sub task 2: 
 
 Histogram of total number of steps taken per day.
-```{r,echo=TRUE,warning=FALSE,message=FALSE}
+```{r Plot 3: Hostogram of total number of steps taken per day on imputed data,echo=TRUE,warning=FALSE,message=FALSE}
 new_dat<-dat%>%group_by(date)%>%summarize(total=sum(steps))
 ggplot(data=new_dat,aes(total,fill="pink"))+geom_histogram()  +
         labs(x="Total number of steps taken per day",
-             y="Frequency")+
+             y="Frequency",
+             title= "Histogram of total number of steps taken per day on imputed data"
+             )+
         theme_bw()
 ```
 
@@ -241,7 +248,7 @@ data_4<-dat%>%
 
 Make a panel plot containing a time series plot (i.e.type="l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis).
 
-```{r,echo=TRUE}
+```{r Plot 5: Time series plot,echo=TRUE}
 library(lattice)
 xyplot(average~interval|day,data=data_4,layout=c(1,2),type="l",ylab="Average number of steps taken per day",xlab="Interval")
 
