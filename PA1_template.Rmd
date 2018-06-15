@@ -82,7 +82,7 @@ data<-data%>%
 
 Histogram of total number of steps taken per day
 
-```{r,plot1:histogram on data with omitted NA, echo=TRUE,warning=FALSE,message=FALSE}
+```{r Plot1, echo=TRUE,warning=FALSE,message=FALSE}
 library(ggplot2)
 ggplot(data=data,aes(total,fill="pink"))+
         geom_histogram()+
@@ -120,7 +120,7 @@ Compute the average steps taken in each unique interval and fill in the missing 
 
 Prepare a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 
-```{r Plot 2: Average number of steps taken averaged across all days,echo=TRUE}
+```{r Plot 2,echo=TRUE}
 data_2<-tbl_df(file_input_na_rm)%>%
         group_by(interval)%>%
         summarize(average=mean(steps),total=sum(steps))# use this data in next step to fill in missing steps
@@ -185,7 +185,7 @@ WE see that the computation was sucessful and there are no more missing values i
 #### Sub task 2: 
 
 Histogram of total number of steps taken per day.
-```{r Plot 3: Hostogram of total number of steps taken per day on imputed data,echo=TRUE,warning=FALSE,message=FALSE}
+```{r Plot 3,echo=TRUE,warning=FALSE,message=FALSE}
 new_dat<-dat%>%group_by(date)%>%summarize(total=sum(steps))
 ggplot(data=new_dat,aes(total,fill="pink"))+geom_histogram()  +
         labs(x="Total number of steps taken per day",
@@ -248,7 +248,7 @@ data_4<-dat%>%
 
 Make a panel plot containing a time series plot (i.e.type="l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis).
 
-```{r Plot 5: Time series plot,echo=TRUE}
+```{r Plot 5,echo=TRUE}
 library(lattice)
 xyplot(average~interval|day,data=data_4,layout=c(1,2),type="l",ylab="Average number of steps taken per day",xlab="Interval")
 

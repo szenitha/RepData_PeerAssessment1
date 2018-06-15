@@ -83,7 +83,7 @@ Histogram of total number of steps taken per day
                  y="Frequency")+
             theme_bw()
 
-![](PA1_template_files/figure-markdown_strict/plot1:histogram%20on%20data%20with%20omitted%20NA-1.png)
+![](PA1_template_files/figure-markdown_strict/Plot1-1.png)
 
 #### Sub task 3:
 
@@ -130,7 +130,7 @@ average number of steps taken, averaged across all days (y-axis)
               xlab="Interval",
               ylab="Average number of steps taken per day"))
 
-![](PA1_template_files/figure-markdown_strict/Plot%202:%20Average%20number%20of%20steps%20taken%20averaged%20across%20all%20days-1.png)
+![](PA1_template_files/figure-markdown_strict/Plot%202-1.png)
 
 ##### Sub task 2:
 
@@ -205,7 +205,7 @@ Histogram of total number of steps taken per day.
                  )+
             theme_bw()
 
-![](PA1_template_files/figure-markdown_strict/Plot%203:%20Hostogram%20of%20total%20number%20of%20steps%20taken%20per%20day%20on%20imputed%20data-1.png)
+![](PA1_template_files/figure-markdown_strict/Plot%203-1.png)
 
 ### Comprison: Scenario 2 vs Sceanrio 1
 
@@ -268,4 +268,4 @@ averaged across all weekday days or weekend days (y-axis).
     library(lattice)
     xyplot(average~interval|day,data=data_4,layout=c(1,2),type="l",ylab="Average number of steps taken per day",xlab="Interval")
 
-![](PA1_template_files/figure-markdown_strict/Plot%205:%20Time%20series%20plot-1.png)
+![](PA1_template_files/figure-markdown_strict/Plot%205-1.png)
